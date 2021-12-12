@@ -1,0 +1,16 @@
+.container {
+  height: 100vh;
+  background-image: url(/assets/img/background.png);
+}
+
+.info h2 {
+  color: whitesmoke;
+  font-size: 35px;
+  line-height: 46px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.login {
+  background-color: whitesmoke;
+}

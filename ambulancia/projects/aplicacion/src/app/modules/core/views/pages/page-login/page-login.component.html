@@ -1,2 +1,29 @@
-<p>page-login works!</p>
-<amb-login></amb-login>
+<div
+  fxLayout
+  fxLayout.lt-sm="column"
+  fxLayoutAlign="space-between"
+  class="container"
+>
+  <div
+    fxFlex="1 1 30%"
+    fxFlex.lt-md="1 1 50%"
+    fxFlex.lt-sm="1 1 100%"
+    fxLayout="column"
+    fxLayoutAlign="center"
+    fxHide.lt-sm
+    class="info"
+  >
+    <h2>Sistema de Historias</h2>
+  </div>
+
+  <div
+    fxFlex="1 1 30%"
+    fxFlex.lt-md="1 1 50%"
+    fxFlex.lt-sm="1 1 100%"
+    fxLayout
+    fxLayoutAlign="center center"
+    class="login"
+  >
+    <amb-login></amb-login>
+  </div>
+</div>

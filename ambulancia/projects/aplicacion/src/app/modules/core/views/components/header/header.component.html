@@ -1,0 +1,12 @@
+<mat-toolbar fxLayout fxLayoutAlign="end">
+  <button mat-button [matMenuTriggerFor]="menu">
+    <span>Nombre del usuario</span>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

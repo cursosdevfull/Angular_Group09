@@ -73,6 +73,8 @@ export class LoginComponent {
   }
 
   login() {
+    this.formGroup.markAllAsTouched();
+    this.formGroup.updateValueAndValidity();
     if (this.formGroup.valid) {
       // const values = this.formGroup.value;
       const values = this.formGroup.getRawValue();

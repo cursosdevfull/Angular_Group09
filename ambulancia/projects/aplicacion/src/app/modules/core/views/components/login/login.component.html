@@ -1,75 +1,67 @@
-<div fxLayout fxLayoutAlign="center">
-  <mat-card
-    fxFlex="1 1 500px"
-    fxFlex.lt-md="1 1 400px"
-    fxFlex.lt-sm="1 1 320px"
-    class="mat-elevation-z12"
-  >
-    <form [formGroup]="formGroup" fxLayout="column">
-      <h1>Credenciales</h1>
-      <mat-form-field appearance="outline">
-        <mat-label>Correo</mat-label>
-        <input
-          type="text"
-          (input)="setEmail($event)"
-          formControlName="email"
-          matInput
-        />
-        <mat-error
-          *ngIf="
-            formGroup.get('email')?.hasError('required') &&
-            formGroup.get('email')?.touched
-          "
-        >
-          Debe ingresar un email</mat-error
-        >
-        <mat-error
-          *ngIf="
-            formGroup.get('email')?.hasError('email') &&
-            formGroup.get('email')?.touched
-          "
-        >
-          Debe el formato de un correo</mat-error
-        >
-        <mat-error
-          *ngIf="
-            formGroup.get('email')?.hasError('emailNotAllowed') &&
-            formGroup.get('email')?.touched
-          "
-        >
-          Los correos deben ser @company.com o @pe.company.com</mat-error
-        >
-      </mat-form-field>
+<form [formGroup]="formGroup" fxLayout="column">
+  <h1 fxHide.gt-xs>Sistema de Historias</h1>
+  <h2>Credenciales</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Correo</mat-label>
+    <input
+      type="text"
+      (input)="setEmail($event)"
+      formControlName="email"
+      matInput
+    />
+    <mat-error
+      *ngIf="
+        formGroup.get('email')?.hasError('required') &&
+        formGroup.get('email')?.touched
+      "
+    >
+      Debe ingresar un email</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.get('email')?.hasError('email') &&
+        formGroup.get('email')?.touched
+      "
+    >
+      Debe el formato de un correo</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.get('email')?.hasError('emailNotAllowed') &&
+        formGroup.get('email')?.touched
+      "
+    >
+      Los correos deben ser @company.com o @pe.company.com</mat-error
+    >
+  </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Contraseña</mat-label>
-        <input
-          type="password"
-          placeholder="Ingrese su contraseña"
-          (input)="setPassword($event)"
-          formControlName="password"
-          matInput
-        />
-        <mat-error
-          *ngIf="
-            formGroup.get('password')?.hasError('required') &&
-            formGroup.get('password')?.touched
-          "
-        >
-          Debe un password</mat-error
-        >
-        <mat-error
-          *ngIf="
-            formGroup.get('password')?.hasError('pattern') &&
-            formGroup.get('password')?.touched
-          "
-        >
-          La contraseña debe ser sólo dígitos. Mínimo 5.</mat-error
-        >
-      </mat-form-field>
-      <button mat-raised-button (click)="login()" color="primary">
-        Ingresar
-      </button>
-    </form>
-  </mat-card>
-</div>
+  <mat-form-field appearance="outline">
+    <mat-label>Contraseña</mat-label>
+    <input
+      type="password"
+      placeholder="Ingrese su contraseña"
+      (input)="setPassword($event)"
+      formControlName="password"
+      matInput
+    />
+    <mat-error
+      *ngIf="
+        formGroup.get('password')?.hasError('required') &&
+        formGroup.get('password')?.touched
+      "
+    >
+      Debe un password</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.get('password')?.hasError('pattern') &&
+        formGroup.get('password')?.touched
+      "
+    >
+      La contraseña debe ser sólo dígitos. Mínimo 5.</mat-error
+    >
+  </mat-form-field>
+  <button mat-raised-button (click)="login()" color="primary" type="button">
+    Ingresar
+  </button>
+</form>
