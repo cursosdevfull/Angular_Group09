@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './modules/core/core.module';
+import { MenuService } from './modules/helpers/services/menu.service';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -16,7 +17,10 @@ import { CoreModule } from './modules/core/core.module';
     AppRoutingModule,
     CoreModule,
   ],
-  providers: [],
+  providers: [
+    // {provide: MenuService, useClass: MenuService}
+    MenuService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -13,6 +13,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './views/components/header/header.component';
 import { LoginComponent } from './views/components/login/login.component';
 import { PageLoginComponent } from './views/pages/page-login/page-login.component';
+import { MenuComponent } from './views/components/menu/menu.component';
+import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -27,8 +30,15 @@ import { PageLoginComponent } from './views/pages/page-login/page-login.componen
     MatIconModule,
     MatMenuModule,
     FlexLayoutModule,
+    MatListModule,
+    RouterModule,
   ],
-  declarations: [PageLoginComponent, HeaderComponent, LoginComponent],
-  exports: [HeaderComponent],
+  declarations: [
+    PageLoginComponent,
+    HeaderComponent,
+    LoginComponent,
+    MenuComponent,
+  ],
+  exports: [HeaderComponent, MenuComponent],
 })
 export class CoreModule {}

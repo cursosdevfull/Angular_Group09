@@ -1,0 +1,10 @@
+<div class="toolbar" fxLayout fxLayoutAlign="space-between center">
+  <div fxLayout fxLayoutAlign="start center" fxLayoutGap="10px" class="info">
+    <mat-icon>{{ path.icon }}</mat-icon>
+    <h2>{{ path.title }}</h2>
+  </div>
+
+  <div fxLayout fxLayoutAlign="end">
+    <ng-content></ng-content>
+  </div>
+</div>

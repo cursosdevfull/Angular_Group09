@@ -1,0 +1,22 @@
+.info mat-icon {
+  font-size: 34px;
+  width: 34px;
+  height: 34px;
+  color: rgb(30, 41, 59);
+}
+
+.info h2 {
+  font-size: 24px;
+  color: rgb(30, 41, 59);
+  line-height: 80px;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+
+.toolbar {
+  background-color: white !important;
+  height: 80px;
+  padding: 0 16px !important;
+  border-bottom: 1px solid rgb(226, 232, 240);
+}

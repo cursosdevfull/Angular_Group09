@@ -1,0 +1,54 @@
+<mat-nav-list>
+  <mat-list-item *ngFor="let itemMenu of itemsMenu">
+    <a routerLink="{{ itemMenu.url }}">
+      <button mat-icon-button>
+        <mat-icon>{{ itemMenu.icon }}</mat-icon>
+        <span>{{ itemMenu.title }}</span>
+      </button>
+    </a>
+  </mat-list-item>
+  <!-- <mat-list-item>
+    <a routerLink="/home">
+      <button mat-icon-button>
+        <mat-icon>done</mat-icon>
+        <span>Home</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a routerLink="/driver">
+      <button mat-icon-button>
+        <mat-icon>done</mat-icon>
+        <span>Pilotos</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a routerLink="/history">
+      <button mat-icon-button>
+        <mat-icon>done</mat-icon>
+        <span>Historias</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a routerLink="/medic">
+      <button mat-icon-button>
+        <mat-icon>done</mat-icon>
+        <span>Médico</span>
+      </button>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a routerLink="/user">
+      <button mat-icon-button>
+        <mat-icon>done</mat-icon>
+        <span>Usuario</span>
+      </button>
+    </a>
+  </mat-list-item> -->
+</mat-nav-list>
