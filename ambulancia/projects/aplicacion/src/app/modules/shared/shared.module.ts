@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FlexLayoutModule,
     MatCardModule,
     MatTableModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports: [
     TitleComponent,
@@ -36,6 +39,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTooltipModule,
     ConfirmComponent,
     MatDialogModule,
+    MatSnackBarModule,
   ],
 })
 export class SharedModule {}
