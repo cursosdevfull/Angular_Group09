@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
 import { MetaDataColumn } from '../../../../helpers/interfaces/metadatacolumn.interface';
-import { ConfirmComponent } from '../../../../shared/components/confirm/confirm.component';
+import { BaseComponent } from '../../../../shared/classes/base.component';
+import { UtilsService } from '../../../../shared/helpers/utils.service';
+import { FormComponent } from '../../components/form/form.component';
 
 @Component({
   selector: 'amb-page-list',
   templateUrl: './page-list.component.html',
   styleUrls: ['./page-list.component.css'],
 })
-export class PageListComponent implements OnInit {
+export class PageListComponent extends BaseComponent {
   metaDataColumns: MetaDataColumn[] = [
     { field: 'id', title: 'ID' },
     { field: 'name', title: 'Nombre' },
@@ -22,31 +22,11 @@ export class PageListComponent implements OnInit {
     { id: 3, name: 'Pedro', lastname: 'Gonzalez' },
   ];
 
-  constructor(private dialog: MatDialog, private notification: MatSnackBar) {}
+  constructor(utilsService: UtilsService) {
+    super(utilsService, FormComponent);
+  }
 
-  ngOnInit(): void {}
-
-  delete(row: any) {
-    const reference: MatDialogRef<ConfirmComponent> = this.dialog.open(
-      ConfirmComponent,
-      { disableClose: true, width: '340px' }
-    );
-
-    reference.componentInstance.message =
-      'Esta acción no se puede deshacer, ¿está seguro?';
-
-    reference.afterClosed().subscribe((data) => {
-      if (!data) {
-        return;
-      }
-
-      this.notification.open('Registro eliminado', '', { duration: 2000 });
-
-      //alert('Registro eliminado');
-    });
-
-    /* if (confirm('¿Quiere eliminar este registro?')) {
-      alert('Registro eliminado');
-    } */
+  ngOnDestroy(): void {
+    this.onDestroy();
   }
 }

@@ -1,0 +1,9 @@
+.modal-form mat-dialog-container {
+  width: 600px;
+}
+
+@media screen and (max-width: 600px) {
+  .modal-form mat-dialog-container {
+    width: 400px;
+  }
+}

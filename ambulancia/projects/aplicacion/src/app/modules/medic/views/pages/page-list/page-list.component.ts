@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MetaDataColumn } from '../../../../helpers/interfaces/metadatacolumn.interface';
+import { BaseComponent } from '../../../../shared/classes/base.component';
+import { UtilsService } from '../../../../shared/helpers/utils.service';
+import { FormComponent } from '../../components/form/form.component';
 
 @Component({
   selector: 'amb-page-list',
   templateUrl: './page-list.component.html',
   styleUrls: ['./page-list.component.css'],
 })
-export class PageListComponent implements OnInit {
+export class PageListComponent extends BaseComponent {
   metaDataColumns: MetaDataColumn[] = [
     { field: 'id', title: 'ID' },
     { field: 'name', title: 'Nombre' },
@@ -20,7 +23,13 @@ export class PageListComponent implements OnInit {
     { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
   ];
 
-  constructor() {}
+  override messageToDelete = '¿Está seguro?';
 
-  ngOnInit(): void {}
+  constructor(utilsService: UtilsService) {
+    super(utilsService, FormComponent);
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy();
+  }
 }

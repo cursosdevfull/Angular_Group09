@@ -38,12 +38,9 @@ export class TableComponent implements OnInit {
   }
 
   ngAfterContentInit(): void {
-    console.log('this.columnsDef', this.columnsDef);
     if (!this.columnsDef) {
       return;
     }
-
-    console.log(this.columnsDef);
 
     this.columnsDef.forEach((columnDef: MatColumnDef) => {
       this.listFields.push(columnDef.name);

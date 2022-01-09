@@ -1,5 +1,5 @@
 <amb-title>
-  <button mat-flat-button color="accent">
+  <button mat-flat-button color="accent" (click)="openForm()">
     <mat-icon>add</mat-icon>
     <span>Agregar</span>
   </button>
@@ -9,7 +9,12 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let row" class="align-right">
-        <button mat-icon-button color="primary" matTooltip="EDITAR">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="EDITAR"
+          (click)="openForm(row)"
+        >
           <mat-icon>edit</mat-icon>
         </button>
         <button
