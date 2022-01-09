@@ -19,9 +19,10 @@ export class TableComponent implements OnInit {
   @Input() metaDataColumns: MetaDataColumn[] = [];
   @Input() data: any = [];
   @ContentChildren(MatColumnDef, { descendants: true })
+  columnsDef!: QueryList<MatColumnDef>;
   @ViewChild(MatTable, { static: true })
   table!: MatTable<any>;
-  columnsDef!: QueryList<MatColumnDef>;
+
   listFields: string[] = [];
 
   constructor() {}
@@ -37,7 +38,7 @@ export class TableComponent implements OnInit {
   }
 
   ngAfterContentInit(): void {
-    console.log('this.table', this.columnsDef);
+    console.log('this.columnsDef', this.columnsDef);
     if (!this.columnsDef) {
       return;
     }

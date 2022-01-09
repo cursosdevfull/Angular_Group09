@@ -22,4 +22,10 @@ export class PageListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  delete(row: any) {
+    if (confirm('¿Quiere eliminar este registro?')) {
+      alert('Registro eliminado');
+    }
+  }
 }
