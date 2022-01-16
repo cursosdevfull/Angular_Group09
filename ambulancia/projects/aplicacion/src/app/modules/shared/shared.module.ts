@@ -15,7 +15,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
 
 import {
   PerfectScrollbarModule,
@@ -23,6 +22,9 @@ import {
   PerfectScrollbarConfigInterface,
 } from 'ngx-perfect-scrollbar';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ButtonComponent } from './components/button/button.component';
+import { FormsModule } from '@angular/forms';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -35,6 +37,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TableComponent,
     ConfirmComponent,
     PaginatorComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -62,8 +65,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatSnackBarModule,
     PerfectScrollbarModule,
     PaginatorComponent,
-    MatFormFieldModule,
     MatInputModule,
+    MatToolbarModule,
+    ButtonComponent,
+    FlexLayoutModule,
   ],
   providers: [
     {

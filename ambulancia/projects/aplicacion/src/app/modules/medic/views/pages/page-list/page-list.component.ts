@@ -109,13 +109,7 @@ export class PageListComponent extends BaseComponent {
     { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
   ];
 
-  data: any = [];
-
-  currentPage = 0;
-  pageSize = 30;
   totalRecords = this.records.length;
-  totalPages = Math.ceil(this.totalRecords / this.pageSize);
-
   override messageToDelete = '¿Está seguro?';
 
   constructor(utilsService: UtilsService) {
@@ -123,18 +117,6 @@ export class PageListComponent extends BaseComponent {
   }
 
   ngOnInit() {
-    this.loadData();
-  }
-
-  loadData() {
-    this.data = this.records.slice(
-      this.currentPage * this.pageSize,
-      (this.currentPage + 1) * this.pageSize
-    );
-  }
-
-  changePage(pageIndex: number) {
-    this.currentPage = pageIndex;
     this.loadData();
   }
 

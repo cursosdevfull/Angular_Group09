@@ -12,3 +12,7 @@ body {
 .align-right {
   text-align: right;
 }
+
+.heightMaxPerfectScrollBar {
+  height: 90%;
+}
