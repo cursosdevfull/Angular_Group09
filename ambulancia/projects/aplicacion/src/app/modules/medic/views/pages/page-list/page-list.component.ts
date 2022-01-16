@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { MetaDataColumn } from '../../../../helpers/interfaces/metadatacolumn.interface';
 import { BaseComponent } from '../../../../shared/classes/base.component';
 import { UtilsService } from '../../../../shared/helpers/utils.service';
@@ -17,16 +18,124 @@ export class PageListComponent extends BaseComponent {
     { field: 'cmp', title: 'Registro Profesional' },
   ];
 
-  data = [
+  records = [
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
+    { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
+    { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
+    { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
     { id: 1, name: 'Sergio', lastname: 'Hidalgo', cmp: 20234 },
     { id: 2, name: 'Juan', lastname: 'Perez', cmp: 34534 },
     { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
   ];
 
+  data: any = [];
+
+  currentPage = 0;
+  pageSize = 30;
+  totalRecords = this.records.length;
+  totalPages = Math.ceil(this.totalRecords / this.pageSize);
+
   override messageToDelete = '¿Está seguro?';
 
   constructor(utilsService: UtilsService) {
     super(utilsService, FormComponent);
+  }
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.data = this.records.slice(
+      this.currentPage * this.pageSize,
+      (this.currentPage + 1) * this.pageSize
+    );
+  }
+
+  changePage(pageIndex: number) {
+    this.currentPage = pageIndex;
+    this.loadData();
   }
 
   ngOnDestroy(): void {

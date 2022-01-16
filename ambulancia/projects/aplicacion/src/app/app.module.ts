@@ -10,6 +10,8 @@ import { MenuService } from './modules/helpers/services/menu.service';
 import { UtilsService } from './modules/shared/helpers/utils.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { Paginator } from './modules/shared/classes/paginator';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -25,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   providers: [
     // {provide: MenuService, useClass: MenuService}
     // { provide: UtilsService, useClass: UtilsService },
+    { provide: MatPaginatorIntl, useClass: Paginator },
     MenuService,
   ],
   bootstrap: [AppComponent],

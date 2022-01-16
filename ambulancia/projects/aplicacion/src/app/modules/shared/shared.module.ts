@@ -12,6 +12,21 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+
+import {
+  PerfectScrollbarModule,
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface,
+} from 'ngx-perfect-scrollbar';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
 
 @NgModule({
   declarations: [
@@ -19,6 +34,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ContainerComponent,
     TableComponent,
     ConfirmComponent,
+    PaginatorComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +44,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
   ],
   exports: [
     TitleComponent,
@@ -40,6 +60,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ConfirmComponent,
     MatDialogModule,
     MatSnackBarModule,
+    PerfectScrollbarModule,
+    PaginatorComponent,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
   ],
 })
 export class SharedModule {}
