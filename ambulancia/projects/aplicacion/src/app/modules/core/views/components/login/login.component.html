@@ -3,12 +3,7 @@
   <h2>Credenciales</h2>
   <mat-form-field appearance="outline">
     <mat-label>Correo</mat-label>
-    <input
-      type="text"
-      (input)="setEmail($event)"
-      formControlName="email"
-      matInput
-    />
+    <input type="text" formControlName="email" matInput />
     <mat-error
       *ngIf="
         formGroup.get('email')?.hasError('required') &&
@@ -40,7 +35,6 @@
     <input
       type="password"
       placeholder="Ingrese su contraseña"
-      (input)="setPassword($event)"
       formControlName="password"
       matInput
     />

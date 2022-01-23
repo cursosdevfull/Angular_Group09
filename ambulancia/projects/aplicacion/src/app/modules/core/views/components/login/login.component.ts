@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -6,6 +6,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { AuthModel } from '../../../domain/auth.model';
 
 @Component({
   selector: 'amb-login',
@@ -13,6 +14,7 @@ import {
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  @Output() onLogin: EventEmitter<AuthModel> = new EventEmitter<AuthModel>();
   email: string = '';
   password: string = '';
 
@@ -24,64 +26,21 @@ export class LoginComponent {
 
   loadForm() {
     this.formGroup = new FormGroup({
-      email: new FormControl(null, [
-        Validators.required,
-        Validators.email,
-        this.validateEmailDomainAllowed(
-          '@company.com',
-          '@pe.company.com',
-          '@mx.company.com'
-        ),
-      ]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(/[0-9]{5,}/),
-      ]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required]),
     });
-  }
-
-  validateEmailCompany(fc: FormControl) {
-    const value = fc.value;
-    if (!value) return null;
-
-    if (value.includes('@company.com') || value.includes('@pe.company.com')) {
-      return null;
-    } else {
-      return { emailNotAllowed: true };
-    }
-  }
-
-  validateEmailDomainAllowed(...domainsAllowed: string[]): ValidatorFn {
-    return (fc: AbstractControl): { [key: string]: any } | null => {
-      const value = fc.value; // sergio@correo.com
-      if (!value) return null;
-
-      if (domainsAllowed.includes(value.split('@')[1])) {
-        return null;
-      } else {
-        return { emailNotAllowed: true };
-      }
-    };
-  }
-
-  setEmail(evt: InputEvent | any) {
-    this.email = (evt.target as HTMLInputElement).value;
-  }
-
-  setPassword(evt: InputEvent | any) {
-    this.password = (evt.target as HTMLInputElement).value;
   }
 
   login() {
     this.formGroup.markAllAsTouched();
     this.formGroup.updateValueAndValidity();
     if (this.formGroup.valid) {
-      // const values = this.formGroup.value;
-      const values = this.formGroup.getRawValue();
-      console.log('Login OK', values);
+      const values = this.formGroup.value;
+      const authModel: AuthModel = {
+        correo: values.email,
+        password: values.password,
+      };
+      this.onLogin.emit(authModel);
     }
-    /* console.log(this.formGroup.valid); */
-    /*     console.log('email: ', this.email);
-    console.log('password: ', this.password); */
   }
 }

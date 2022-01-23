@@ -13,6 +13,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Paginator } from './modules/shared/classes/paginator';
 import { LayoutModule } from './config/modules/layout.module';
 import { LAYOUT_CONSTANTS } from './config/constants/layout.constants';
+import { AuthenticationGuard } from './modules/shared/guards/authentication.guard';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -30,6 +31,7 @@ import { LAYOUT_CONSTANTS } from './config/constants/layout.constants';
     // {provide: MenuService, useClass: MenuService}
     // { provide: UtilsService, useClass: UtilsService },
     { provide: MatPaginatorIntl, useClass: Paginator },
+    AuthenticationGuard,
     MenuService,
   ],
   bootstrap: [AppComponent],
