@@ -25,6 +25,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ButtonComponent } from './components/button/button.component';
 import { FormsModule } from '@angular/forms';
+import { ElementTableComponent } from './components/element-table/element-table.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -38,6 +39,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ConfirmComponent,
     PaginatorComponent,
     ButtonComponent,
+    ElementTableComponent,
   ],
   imports: [
     CommonModule,

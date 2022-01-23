@@ -7,11 +7,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './modules/core/core.module';
 import { MenuService } from './modules/helpers/services/menu.service';
-import { UtilsService } from './modules/shared/helpers/utils.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Paginator } from './modules/shared/classes/paginator';
+import { LayoutModule } from './config/modules/layout.module';
+import { LAYOUT_CONSTANTS } from './config/constants/layout.constants';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -23,6 +24,7 @@ import { Paginator } from './modules/shared/classes/paginator';
     CoreModule,
     MatDialogModule,
     MatSnackBarModule,
+    LayoutModule.forRoot(LAYOUT_CONSTANTS),
   ],
   providers: [
     // {provide: MenuService, useClass: MenuService}

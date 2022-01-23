@@ -1,4 +1,4 @@
 export interface MetaDataColumn {
-  field: string;
+  field: string | string[];
   title: string;
 }

@@ -1,12 +1,12 @@
 <mat-sidenav-container>
-  <mat-sidenav opened="true" mode="side">
+  <mat-sidenav opened="true" mode="side" *ngIf="config.menu">
     <div class="logo">
       <h3>Sistema de Historias</h3>
     </div>
     <amb-menu></amb-menu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <amb-header></amb-header>
+    <amb-header *ngIf="config.menu"></amb-header>
     <router-outlet></router-outlet>
     <!-- <amb-page-login></amb-page-login> -->
   </mat-sidenav-content>

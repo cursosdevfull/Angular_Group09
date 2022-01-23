@@ -32,7 +32,12 @@ export class TableComponent implements OnInit {
   ngOnChanges(values: SimpleChanges): void {
     if (values['metaDataColumns']) {
       this.listFields = values['metaDataColumns'].currentValue.map(
-        (el: MetaDataColumn) => el.field
+        (el: MetaDataColumn) => {
+          if (Array.isArray(el.field)) {
+            return el.field[0];
+          }
+          return el.field;
+        }
       );
     }
   }
@@ -46,5 +51,13 @@ export class TableComponent implements OnInit {
       this.listFields.push(columnDef.name);
       this.table.addColumnDef(columnDef);
     });
+  }
+
+  getNameColumn(field: string | string[]) {
+    return Array.isArray(field) ? field[0] : field;
+  }
+
+  isArray(field: string | string[]) {
+    return Array.isArray(field);
   }
 }
