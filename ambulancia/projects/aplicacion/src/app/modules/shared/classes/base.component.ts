@@ -1,38 +1,44 @@
 import { ComponentType } from '@angular/cdk/portal';
+import { environment } from 'projects/aplicacion/src/environments/environment';
 import { takeUntil } from 'rxjs';
 import { MetaDataColumn } from '../../helpers/interfaces/metadatacolumn.interface';
+import { Page } from '../../helpers/interfaces/page.interface';
 import { ConfirmComponent } from '../components/confirm/confirm.component';
 import { UtilsService } from '../helpers/utils.service';
+import { BaseUseCase } from './base-usecase';
 import { EndSubscription } from './endsubscription';
 
-export abstract class BaseComponent extends EndSubscription {
+export abstract class BaseComponent<
+  T,
+  U extends BaseUseCase<T>
+> extends EndSubscription {
   abstract metaDataColumns: MetaDataColumn[];
-  abstract records: any[];
-  abstract totalRecords: number;
+  totalRecords: number = 0;
 
   currentPage = 0;
-  pageSize = 30;
+  pageSize = environment.pageSize;
 
-  data: any = [];
+  data: T[] = [];
   messageToDelete = 'Esta acción no se puede deshacer, ¿está seguro?';
 
-  constructor(private utilsService: UtilsService, private component: any) {
+  constructor(
+    private useCase: U,
+    private utilsService: UtilsService,
+    private component: any
+  ) {
     super();
-  }
-
-  loadData() {
-    this.data = this.records.slice(
-      this.currentPage * this.pageSize,
-      (this.currentPage + 1) * this.pageSize
-    );
+    this.changePage(0);
   }
 
   changePage(pageIndex: number) {
-    this.currentPage = pageIndex;
-    this.loadData();
+    this.useCase.getByPage(pageIndex).subscribe((response: Page<T>) => {
+      this.data = response.records;
+      this.totalRecords = response.totalRecords;
+      this.currentPage = pageIndex;
+    });
   }
 
-  delete(row: any) {
+  delete(id: number) {
     this.utilsService
       .showConfirm<ConfirmComponent>(
         ConfirmComponent,
@@ -48,25 +54,13 @@ export abstract class BaseComponent extends EndSubscription {
           return;
         }
 
-        this.utilsService.showNotification('Registro eliminado', {
-          duration: 2000,
+        this.useCase.delete(id).subscribe(() => {
+          this.utilsService.showNotification('Registro eliminado', {
+            duration: 2000,
+          });
+          this.changePage(this.currentPage);
         });
       });
-
-    /*     const reference: MatDialogRef<ConfirmComponent> = this.dialog.open(
-      ConfirmComponent,
-      { disableClose: true, width: '340px' }
-    );
-
-    reference.componentInstance.message = this.messageToDelete;
-
-    reference.afterClosed().subscribe((data) => {
-      if (!data) {
-        return;
-      }
-
-      this.notification.open('Registro eliminado', '', { duration: 2000 });
-    }); */
   }
 
   openForm<U>(row: any = null) {
@@ -81,24 +75,26 @@ export abstract class BaseComponent extends EndSubscription {
         if (!response) {
           return;
         }
+        const record = { ...response };
+        delete record.id;
 
         if (response.id) {
-          const recordMatched = this.records.find(
-            (el) => el.id === response.id
-          );
-          if (recordMatched) {
-            recordMatched.name = response.name;
-            recordMatched.lastname = response.lastname;
-          }
+          this.useCase.update(response.id, record).subscribe(() => {
+            this.showMessageConfirm();
+            this.changePage(this.currentPage);
+          });
         } else {
-          response.id = this.totalRecords;
-          this.records.push(response);
-          this.totalRecords++;
+          this.useCase.insert(record).subscribe(() => {
+            this.showMessageConfirm();
+            this.changePage(this.currentPage);
+          });
         }
-
-        this.utilsService.showNotification('Registro grabado', {
-          duration: 2000,
-        });
       });
+  }
+
+  showMessageConfirm() {
+    this.utilsService.showNotification('Registro grabado', {
+      duration: 2000,
+    });
   }
 }

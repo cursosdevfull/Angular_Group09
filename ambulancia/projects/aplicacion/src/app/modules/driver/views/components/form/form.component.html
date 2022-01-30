@@ -7,25 +7,15 @@
 
 <mat-dialog-content>
   <form fxLayout="column" [formGroup]="group">
-    <div fxLayout fxLayoutGap="20px">
+    <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input
           type="text"
           matInput
-          name="name"
+          name="nombre"
           required
-          formControlName="name"
-        />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Apellido</mat-label>
-        <input
-          type="text"
-          matInput
-          required
-          name="lastname"
-          formControlName="lastname"
+          formControlName="nombre"
         />
       </mat-form-field>
     </div>

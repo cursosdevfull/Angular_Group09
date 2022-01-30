@@ -9,7 +9,7 @@ import { FormComponent } from '../../components/form/form.component';
   templateUrl: './page-list.component.html',
   styleUrls: ['./page-list.component.css'],
 })
-export class PageListComponent extends BaseComponent implements OnInit {
+export class PageListComponent /*extends BaseComponent implements OnInit*/ {
   metaDataColumns: MetaDataColumn[] = [
     { field: 'id', title: 'ID' },
     { field: 'name', title: 'Nombre' },
@@ -83,15 +83,17 @@ export class PageListComponent extends BaseComponent implements OnInit {
   ];
   totalRecords = this.records.length;
 
+  data = [];
+
   constructor(utilsService: UtilsService) {
-    super(utilsService, FormComponent);
+    //super(utilsService, FormComponent);
   }
 
-  ngOnInit() {
+  /*  ngOnInit() {
     this.loadData();
   }
 
   ngOnDestroy(): void {
     this.onDestroy();
-  }
+  } */
 }

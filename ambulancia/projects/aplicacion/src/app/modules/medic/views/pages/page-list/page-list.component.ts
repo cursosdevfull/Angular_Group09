@@ -10,7 +10,7 @@ import { FormComponent } from '../../components/form/form.component';
   templateUrl: './page-list.component.html',
   styleUrls: ['./page-list.component.css'],
 })
-export class PageListComponent extends BaseComponent {
+export class PageListComponent /*extends BaseComponent*/ {
   metaDataColumns: MetaDataColumn[] = [
     { field: 'id', title: 'ID' },
     { field: 'name', title: 'Nombre' },
@@ -109,18 +109,20 @@ export class PageListComponent extends BaseComponent {
     { id: 3, name: 'Pedro', lastname: 'Gonzalez', cmp: 22345 },
   ];
 
+  data = [];
+
   totalRecords = this.records.length;
-  override messageToDelete = '¿Está seguro?';
+  //override messageToDelete = '¿Está seguro?';
 
   constructor(utilsService: UtilsService) {
-    super(utilsService, FormComponent);
+    //super(utilsService, FormComponent);
   }
 
-  ngOnInit() {
+  /*   ngOnInit() {
     this.loadData();
   }
 
   ngOnDestroy(): void {
     this.onDestroy();
-  }
+  } */
 }

@@ -9,22 +9,17 @@
           <button mat-icon-button color="primary">
             <mat-icon>edit</mat-icon>
           </button>
-          <button
-            mat-icon-button
-            color="accent"
-            matTooltip="ELIMINAR"
-            (click)="delete(row)"
-          >
+          <button mat-icon-button color="accent" matTooltip="ELIMINAR">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>
     </amb-table>
   </perfect-scrollbar>
-  <amb-paginator
+  <!--   <amb-paginator
     [totalRecords]="totalRecords"
     [pageSize]="pageSize"
     [currentPage]="currentPage"
     (onChangePage)="changePage($event)"
-  ></amb-paginator>
+  ></amb-paginator> -->
 </amb-container>

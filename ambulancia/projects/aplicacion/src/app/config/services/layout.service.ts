@@ -20,4 +20,10 @@ export class LayoutService {
   gettingConfiguration(): Observable<ILayout> {
     return this.configSubject.asObservable();
   }
+
+  /*
+  set configuration(value: ILayout) {...}
+  get configuration(): ILayout {...}
+
+  */
 }

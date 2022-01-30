@@ -28,6 +28,7 @@ export class LoginComponent {
     this.formGroup = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
+      recaptchaReactive: new FormControl('abc'),
     });
   }
 
@@ -39,6 +40,7 @@ export class LoginComponent {
       const authModel: AuthModel = {
         correo: values.email,
         password: values.password,
+        recaptchaReactive: values.recaptchaReactive,
       };
       this.onLogin.emit(authModel);
     }

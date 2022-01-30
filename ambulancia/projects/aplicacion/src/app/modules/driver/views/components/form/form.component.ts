@@ -26,23 +26,15 @@ export class FormComponent implements OnInit {
   loadForm() {
     this.group = new FormGroup({
       id: new FormControl(this.data ? this.data.id : null),
-      name: new FormControl(
-        this.data ? this.data.name : '',
+      nombre: new FormControl(
+        this.data ? this.data.nombre : '',
         Validators.required
       ),
-      lastname: new FormControl(this.data ? this.data.lastname : '', [
-        Validators.required,
-      ]),
     });
   }
 
   save() {
     const record = this.group.value;
     this.reference.close(record);
-    /* if (this.group.valid) {
-      alert('formulario válido');
-    } else {
-      alert('formulario no válido');
-    } */
   }
 }

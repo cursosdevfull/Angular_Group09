@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'projects/aplicacion/src/app/config/services/layout.service';
 import { ILayout } from '../../../../../config/interfaces/layout.interface';
+import { AuthUseCase } from '../../../application/auth.usecase';
 import { AuthModel } from '../../../domain/auth.model';
 
 @Component({
@@ -10,7 +11,11 @@ import { AuthModel } from '../../../domain/auth.model';
   styleUrls: ['./page-login.component.css'],
 })
 export class PageLoginComponent implements OnInit {
-  constructor(private layoutService: LayoutService, private router: Router) {
+  constructor(
+    private layoutService: LayoutService,
+    private router: Router,
+    private authUseCase: AuthUseCase
+  ) {
     const options: ILayout = { header: false, menu: false };
     this.layoutService.settingConfiguration(options);
   }
@@ -18,11 +23,6 @@ export class PageLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(authModel: AuthModel): void {
-    this.router.navigate(['/summary']);
+    this.authUseCase.login(authModel);
   }
-
-  /*   ngOnDestroy(): void {
-    const options: ILayout = { header: true, menu: true };
-    this.layoutService.settingConfiguration(options);
-  } */
 }
