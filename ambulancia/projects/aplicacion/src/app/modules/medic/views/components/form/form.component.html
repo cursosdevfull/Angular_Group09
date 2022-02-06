@@ -1,1 +1,58 @@
-<p>form works!</p>
+<mat-toolbar fxLayout fxLayoutAlign="space-between center">
+  <h3>{{ title }}</h3>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form fxLayout="column" [formGroup]="group">
+    <div fxLayout fxLayoutGap="10px">
+      <div fxFlex="1 1 33%">
+        <amb-photo formControlName="foto"></amb-photo>
+      </div>
+      <div fxLayout="column" fxFlex="1 1 33%">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Segundo nombre</mat-label>
+          <input matInput formControlName="segundo_nombre" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" required />
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxFlex="1 1 33%">
+        <mat-form-field appearance="outline">
+          <mat-label>CMP</mat-label>
+          <input matInput formControlName="cmp" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>DNI</mat-label>
+          <input matInput formControlName="dni" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="correo" required />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout fxLayoutAlign="end" fxLayoutGap="10px">
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        [disabled]="group.invalid"
+      >
+        Grabar
+      </button>
+      <button mat-button color="primary" type="button" mat-dialog-close>
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

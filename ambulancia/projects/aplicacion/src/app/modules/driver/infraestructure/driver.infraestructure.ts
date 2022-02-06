@@ -1,18 +1,14 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'projects/aplicacion/src/environments/environment';
 import { Observable } from 'rxjs';
-import { StorageInfraestructure } from '../../core/infraestructure/storage.infraestructure';
 import { Page } from '../../helpers/interfaces/page.interface';
 import { DriverRepository } from '../application/driver.repository';
 import { DriverModel } from '../domain/driver.model';
 
 @Injectable()
 export class DriverInfraestructure extends DriverRepository {
-  constructor(
-    private http: HttpClient,
-    private storage: StorageInfraestructure
-  ) {
+  constructor(private http: HttpClient) {
     super();
   }
   getByPage(page: number): Observable<Page<DriverModel>> {
