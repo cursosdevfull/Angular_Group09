@@ -25,7 +25,7 @@ export class AuthUseCase {
     });
   }
 
-  logout(): Observable<never> {
+  logout(): Observable<any> {
     this.storage.clear();
     this.userLogged = false;
     this.router.navigate(['/']);
@@ -44,7 +44,7 @@ export class AuthUseCase {
     return rolesAllowed.some((role) => userRoles.includes(role));
   }
 
-  getNewAccessToken(refreshToken: string) {
-    this.repository.getNewAccessToken(refreshToken);
+  getNewAccessToken(refreshToken: string): Observable<Tokens> {
+    return this.repository.getNewAccessToken(refreshToken);
   }
 }

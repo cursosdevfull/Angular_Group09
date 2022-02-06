@@ -16,13 +16,14 @@ import { LAYOUT_CONSTANTS } from './config/constants/layout.constants';
 import { AuthenticationGuard } from './modules/shared/guards/authentication.guard';
 import { AuthRepository } from './modules/core/application/auth.repository';
 import { AuthInfraestructure } from './modules/core/infraestructure/auth.infraestructure';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthUseCase } from './modules/core/application/auth.usecase';
 import { StorageRepository } from './modules/core/application/storage.repository';
 import { StorageInfraestructure } from './modules/core/infraestructure/storage.infraestructure';
 import { DriverRepository } from './modules/driver/application/driver.repository';
 import { DriverInfraestructure } from './modules/driver/infraestructure/driver.infraestructure';
 import { DriverUseCase } from './modules/driver/application/driver.usecase';
+import { TokenInterceptor } from './modules/shared/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -45,6 +46,7 @@ import { DriverUseCase } from './modules/driver/application/driver.usecase';
     DriverUseCase,
     { provide: StorageRepository, useClass: StorageInfraestructure },
     AuthenticationGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     MenuService,
   ],
   bootstrap: [AppComponent],

@@ -13,11 +13,13 @@ export class AuthInfraestructure extends AuthRepository {
   }
 
   login(auth: AuthModel): Observable<Tokens> {
-    // auth = {correo: "...", password: "..."}
+    // auth = {cor, preo: "..."assword: "..."}
     return this.http.post<Tokens>(environment.apiPath + '/users/login', auth);
   }
 
-  getNewAccessToken(refreshToken: string): Observable<any> {
-    throw new Error('Method not implemented.');
+  getNewAccessToken(refreshToken: string): Observable<Tokens> {
+    return this.http.get<Tokens>(
+      environment.apiPath + '/users/refresh/' + refreshToken
+    );
   }
 }

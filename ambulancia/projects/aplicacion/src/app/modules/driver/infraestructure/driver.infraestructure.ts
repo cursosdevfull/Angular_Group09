@@ -16,52 +16,31 @@ export class DriverInfraestructure extends DriverRepository {
     super();
   }
   getByPage(page: number): Observable<Page<DriverModel>> {
-    const accessToken = this.storage.getStorage('accessToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${accessToken}` });
-
     return this.http.get<Page<DriverModel>>(
-      `${environment.apiPath}/drivers/page/${page}/${environment.pageSize}`,
-      { headers }
+      `${environment.apiPath}/drivers/page/${page}/${environment.pageSize}`
     );
   }
 
   insert(driver: Partial<DriverModel>): Observable<DriverModel> {
-    const accessToken = this.storage.getStorage('accessToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${accessToken}` });
     return this.http.post<DriverModel>(
       `${environment.apiPath}/drivers`,
-      driver,
-      {
-        headers,
-      }
+      driver
     );
   }
 
   delete(id: number): Observable<DriverModel> {
-    const accessToken = this.storage.getStorage('accessToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${accessToken}` });
     return this.http.delete<DriverModel>(
-      `${environment.apiPath}/drivers/${id}`,
-      { headers }
+      `${environment.apiPath}/drivers/${id}`
     );
   }
   update(id: number, driver: Partial<DriverModel>): Observable<DriverModel> {
-    const accessToken = this.storage.getStorage('accessToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${accessToken}` });
     return this.http.put<DriverModel>(
       `${environment.apiPath}/drivers/${id}`,
-      driver,
-      {
-        headers,
-      }
+      driver
     );
   }
 
   list(): Observable<DriverModel[]> {
-    const accessToken = this.storage.getStorage('accessToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${accessToken}` });
-    return this.http.get<DriverModel[]>(`${environment.apiPath}/drivers`, {
-      headers,
-    });
+    return this.http.get<DriverModel[]>(`${environment.apiPath}/drivers`);
   }
 }
