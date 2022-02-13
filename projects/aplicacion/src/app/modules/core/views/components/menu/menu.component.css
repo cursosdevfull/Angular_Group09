@@ -1,0 +1,35 @@
+a,
+a:link,
+a:visited,
+a:active {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 14px;
+  display: block;
+  font-weight: normal;
+  padding: 0 10px;
+  width: 100%;
+}
+
+a:hover {
+  color: white !important;
+}
+
+span {
+  display: inline-block;
+  padding-left: 8px;
+}
+
+mat-nav-list {
+  width: 95%;
+  height: calc(100vh - 74px);
+}
+
+mat-list-item {
+  margin-top: 10px !important;
+  border-radius: 0 24px 24px 0;
+}
+
+mat-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
