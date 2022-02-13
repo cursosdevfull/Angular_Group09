@@ -54,6 +54,28 @@
               ],
               "outputHashing": "all"
             },
+            "quality": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/aplicacion/src/environments/environment.ts",
+                  "with": "projects/aplicacion/src/environments/environment.qas.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -94,9 +116,7 @@
               "projects/aplicacion/src/favicon.ico",
               "projects/aplicacion/src/assets"
             ],
-            "styles": [
-              "projects/aplicacion/src/styles.css"
-            ],
+            "styles": ["projects/aplicacion/src/styles.css"],
             "scripts": []
           }
         }

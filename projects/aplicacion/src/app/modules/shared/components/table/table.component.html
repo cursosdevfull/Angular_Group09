@@ -1,0 +1,35 @@
+<div fxLayout="column">
+  <ng-content></ng-content>
+  <table mat-table [dataSource]="data" multiTemplateDataRows>
+    <ng-container
+      [matColumnDef]="getNameColumn(column.field)"
+      *ngFor="let column of metaDataColumns"
+    >
+      <th mat-header-cell *matHeaderCellDef>{{ column.title }}</th>
+      <td mat-cell *matCellDef="let row">
+        <span *ngIf="!isArray(column.field); else templateListFields">{{
+          row[column.field.toString()]
+        }}</span>
+        <ng-template #templateListFields>
+          <amb-element-table [row]="row" [column]="column"></amb-element-table>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!--     <ng-container matColumnDef="details">
+      <td mat-cell *matCellDef="let row" [attr.colspan]="listFields.length">
+        {{ row["id"] }}
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="listFields; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: listFields" class="highline"></tr>
+    <!--     <tr
+      mat-row
+      *matRowDef="let row; columns: ['details']"
+      class="highline"
+    ></tr> -->
+  </table>
+</div>
+
+<!-- data = [{id, name, lastname}] -->

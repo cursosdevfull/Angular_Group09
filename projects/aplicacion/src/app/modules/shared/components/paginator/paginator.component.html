@@ -1,0 +1,19 @@
+<div fxLayout fxLayoutAlign="end center" fxLayoutGap="20px">
+  <mat-paginator
+    [length]="totalRecords"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    (page)="changePage($event)"
+    showFirstLastButtons="true"
+  ></mat-paginator>
+
+  <div fxLayout fxLayoutAlign="start center">
+    <mat-form-field fxFlex="1 1 40px">
+      <mat-label>Página</mat-label>
+      <input type="number" matInput [(ngModel)]="pageToGo" />
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="goToPage()">
+      <mat-icon>find_in_page</mat-icon>
+    </button>
+  </div>
+</div>

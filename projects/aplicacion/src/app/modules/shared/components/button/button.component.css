@@ -1,0 +1,11 @@
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  background-color: red !important;
+}
+
+button {
+  font-size: 12px;
+  padding: 0 10px;
+}
