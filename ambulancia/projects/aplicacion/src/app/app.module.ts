@@ -27,6 +27,9 @@ import { TokenInterceptor } from './modules/shared/interceptors/token.intercepto
 import { MedicRepository } from './modules/medic/application/medic.repository';
 import { MedicUseCase } from './modules/medic/application/medic.usecase';
 import { MedicInfraestructure } from './modules/medic/infraestructure/medic.infraestructure';
+import { UserRepository } from './modules/user/application/user.repository';
+import { UserUseCase } from './modules/user/application/user.usecase';
+import { UserInfraestructure } from './modules/user/infraestructure/user.infraestructure';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -49,6 +52,8 @@ import { MedicInfraestructure } from './modules/medic/infraestructure/medic.infr
     DriverUseCase,
     { provide: MedicRepository, useClass: MedicInfraestructure },
     MedicUseCase,
+    { provide: UserRepository, useClass: UserInfraestructure },
+    UserUseCase,
     { provide: StorageRepository, useClass: StorageInfraestructure },
     AuthenticationGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

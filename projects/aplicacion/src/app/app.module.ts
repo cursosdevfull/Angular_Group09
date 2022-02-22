@@ -27,6 +27,18 @@ import { TokenInterceptor } from './modules/shared/interceptors/token.intercepto
 import { MedicRepository } from './modules/medic/application/medic.repository';
 import { MedicUseCase } from './modules/medic/application/medic.usecase';
 import { MedicInfraestructure } from './modules/medic/infraestructure/medic.infraestructure';
+import { UserRepository } from './modules/user/application/user.repository';
+import { UserUseCase } from './modules/user/application/user.usecase';
+import { UserInfraestructure } from './modules/user/infraestructure/user.infraestructure';
+import { RoleRepository } from './modules/role/application/role.repository';
+import { RoleInfraestructure } from './modules/role/infraestructure/role.infraestructure';
+import { RoleUseCase } from './modules/role/application/role.usecase';
+import { CovidRepository } from './modules/summary/application/covid.repository';
+import { CovidUseCase } from './modules/summary/application/covid.usecase';
+import { CovidInfraestructure } from './modules/summary/infraestructure/covid.infraestructure';
+import { SocketRepository } from './modules/summary/application/socket.repository';
+import { SocketUseCase } from './modules/summary/application/socket.usecase';
+import { SocketInfraestructure } from './modules/summary/infraestructure/socket.infraestructure';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -49,6 +61,14 @@ import { MedicInfraestructure } from './modules/medic/infraestructure/medic.infr
     DriverUseCase,
     { provide: MedicRepository, useClass: MedicInfraestructure },
     MedicUseCase,
+    { provide: UserRepository, useClass: UserInfraestructure },
+    UserUseCase,
+    { provide: RoleRepository, useClass: RoleInfraestructure },
+    RoleUseCase,
+    { provide: CovidRepository, useClass: CovidInfraestructure },
+    CovidUseCase,
+    { provide: SocketRepository, useClass: SocketInfraestructure },
+    SocketUseCase,
     { provide: StorageRepository, useClass: StorageInfraestructure },
     AuthenticationGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

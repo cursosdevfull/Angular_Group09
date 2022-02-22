@@ -30,6 +30,8 @@ import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
 import { WebcamModule } from 'ngx-webcam';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { RolesAllowedDirective } from './directives/roles-allowed.directive';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -46,6 +48,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ElementTableComponent,
     PhotoComponent,
     UploadDirective,
+    RolesAllowedDirective,
   ],
   imports: [
     CommonModule,
@@ -80,6 +83,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ButtonComponent,
     FlexLayoutModule,
     PhotoComponent,
+    MatSelectModule,
+    RolesAllowedDirective,
   ],
   providers: [
     {

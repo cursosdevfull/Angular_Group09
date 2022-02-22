@@ -47,4 +47,8 @@ export class AuthUseCase {
   getNewAccessToken(refreshToken: string): Observable<Tokens> {
     return this.repository.getNewAccessToken(refreshToken);
   }
+
+  getRoles() {
+    return this.storage.getFieldInToken('roles') as string[];
+  }
 }

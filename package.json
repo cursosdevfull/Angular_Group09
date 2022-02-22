@@ -7,7 +7,8 @@
     "build": "ng build",
     "build:prod": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "proxy": "ng serve --proxy-config proxy.conf.json"
   },
   "private": true,
   "dependencies": {
@@ -22,10 +23,14 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@swimlane/ngx-charts": "^20.0.1",
+    "cpn": "^0.0.42",
+    "cpndev": "^2.0.0",
     "jwt-decode": "^3.1.2",
     "ngx-perfect-scrollbar": "^10.1.1",
     "ngx-webcam": "^0.4.1",
     "rxjs": "~7.4.0",
+    "socket.io-client": "^2.0.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -33,14 +38,18 @@
     "@angular-devkit/build-angular": "~13.0.4",
     "@angular/cli": "~13.0.3",
     "@angular/compiler-cli": "~13.0.0",
+    "@types/d3-scale": "^4.0.2",
+    "@types/d3-selection": "^3.0.2",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "@types/socket.io-client": "^1.4.35",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^13.0.0",
     "typescript": "~4.4.3"
   }
 }
